@@ -6,7 +6,7 @@ var app=new Vue({
 	mounted:function(){
 		var _this=this;
 		this.$nextTick(function(){
-			axios.get('http://10.44.172.245:3305/data/data.json')
+			axios.get('/data/data.json')
 			.then(
 				function(retObj){
 					if(retObj.status == 200){
