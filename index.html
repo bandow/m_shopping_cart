@@ -152,6 +152,94 @@
 								</div>
 							</div>
 						</li>
+						<li class="food-item">
+							<div class="img"><img src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" alt=""></div>
+							<div class="content">
+								<h3 class="name">皮蛋瘦肉粥</h3>
+								<p class="desc">咸粥</p>
+								<div class="extra">
+									<span class="count">月售229</span>
+									<span class="count">好评100</span>
+								</div>
+								<div class="price">
+									<span class="now">￥<em>15</em></span>
+									<span class="old">￥36</span>
+								</div>
+								<div class="cartControl-wrapper">
+									<div class="cart-decrease">
+										<span class="iconfont icon-jian"></span>
+										<span class="cart-count">0</span>
+										<span class="iconfont cart-add"></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="food-item">
+							<div class="img"><img src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" alt=""></div>
+							<div class="content">
+								<h3 class="name">皮蛋瘦肉粥</h3>
+								<p class="desc">咸粥</p>
+								<div class="extra">
+									<span class="count">月售229</span>
+									<span class="count">好评100</span>
+								</div>
+								<div class="price">
+									<span class="now">￥<em>10</em></span>
+									<span class="old">￥36</span>
+								</div>
+								<div class="cartControl-wrapper">
+									<div class="cart-decrease">
+										<span class="iconfont icon-jian"></span>
+										<span class="cart-count">0</span>
+										<span class="iconfont cart-add"></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="food-item">
+							<div class="img"><img src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" alt=""></div>
+							<div class="content">
+								<h3 class="name">皮蛋瘦肉粥</h3>
+								<p class="desc">咸粥</p>
+								<div class="extra">
+									<span class="count">月售229</span>
+									<span class="count">好评100</span>
+								</div>
+								<div class="price">
+									<span class="now">￥<em>10</em></span>
+									<span class="old">￥36</span>
+								</div>
+								<div class="cartControl-wrapper">
+									<div class="cart-decrease">
+										<span class="iconfont icon-jian"></span>
+										<span class="cart-count">0</span>
+										<span class="iconfont cart-add"></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="food-item">
+							<div class="img"><img src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114" alt=""></div>
+							<div class="content">
+								<h3 class="name">皮蛋瘦肉粥</h3>
+								<p class="desc">咸粥</p>
+								<div class="extra">
+									<span class="count">月售229</span>
+									<span class="count">好评100</span>
+								</div>
+								<div class="price">
+									<span class="now">￥<em>10</em></span>
+									<span class="old">￥36</span>
+								</div>
+								<div class="cartControl-wrapper">
+									<div class="cart-decrease">
+										<span class="iconfont icon-jian"></span>
+										<span class="cart-count">0</span>
+										<span class="iconfont cart-add"></span>
+									</div>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</li>
 				<li>
@@ -322,6 +410,18 @@
 			$("html,body").animate({scrollTop: pos}, 1000);
 			return false;
 		});
+		//右边滚动
+		$(window).scroll(function(){
+			var sctop=$(this).scrollTop();
+			$(".foods-wrapper>ul>li").each(function(index,element){
+				var park=$(this).offset().top-sctop;
+				if(park<listH && park>=0){
+				    $(".menu-wrapper ul li").removeClass('current');
+				    var inde=$(this).index();
+				    $(".menu-wrapper ul li:eq("+inde+")").addClass('current');
+			    }
+			});
+		});
 		//点击详情
 		$(".supports-count,.bulletin-wrapper").on("click",function(){
 			$(".detail").css("transform","scale(1.5)");
@@ -378,6 +478,16 @@
 		$(".detail-info .content .buy").on("click",function(){
 			$(this).hide();
 			$(this).prev().show();
+
+			//切换添加1
+			cartCount=$(this).prev().find(".cart-count").text();
+			cartCount++;
+			if(cartCount>0){
+				$(this).prev().find(".cart-count").css("display","inline-block");
+				$(this).prev().find(".cart-count").prev().css("display","inline-block");
+			}
+			$(this).prev().find(".cart-count").text(cartCount);
+			infoCount();
 		});
 		$(".detail-info .icon-jian").on("click",function(){
 			if(cartCount==0){
