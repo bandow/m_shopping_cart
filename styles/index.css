@@ -794,4 +794,133 @@ html {
   -webkit-transition: all 0.5s;
   transition: all 0.5s; }
 
+.shopcart-list {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 44px;
+  z-index: 41;
+  width: 100%;
+  display: none; }
+  .shopcart-list .list-header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 18px;
+    background: #f3f5f7;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1); }
+    .shopcart-list .list-header h2 {
+      float: left;
+      font-size: 14px;
+      color: #07111b; }
+    .shopcart-list .list-header .empty {
+      float: right;
+      font-size: 12px;
+      color: #00a0dc; }
+  .shopcart-list .list-content {
+    padding: 0 18px;
+    max-height: 217px;
+    overflow: auto;
+    background: #fff; }
+    .shopcart-list .list-content ul li {
+      padding: 12px 0;
+      box-sizing: border-box;
+      position: relative; }
+      .shopcart-list .list-content ul li .name {
+        line-height: 24px;
+        font-size: 14px;
+        color: #07111b; }
+      .shopcart-list .list-content ul li .price {
+        position: absolute;
+        right: 90px;
+        bottom: 12px;
+        line-height: 24px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #f01414; }
+      .shopcart-list .list-content ul li .cartControl-wrapper {
+        position: absolute;
+        right: 0;
+        bottom: 12px; }
+        .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease {
+          display: inline-block; }
+          .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease .icon-jian {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: top;
+            color: #00a0dc;
+            border: 1px solid #00a0dc;
+            border-radius: 100%; }
+            .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease .icon-jian:after {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              content: "";
+              width: 10px;
+              height: 1px;
+              background: #00a0dc;
+              -moz-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+          .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease .cart-count {
+            vertical-align: top;
+            display: inline-block;
+            line-height: 20px;
+            font-size: 10px;
+            width: 12px;
+            text-align: center;
+            color: #93999f; }
+          .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease .cart-add {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: top;
+            color: #00a0dc;
+            border: 1px solid #00a0dc;
+            border-radius: 100%;
+            background: #00a0dc; }
+            .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease .cart-add:before {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              content: "";
+              width: 1px;
+              height: 10px;
+              background: #fff;
+              -moz-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+            .shopcart-list .list-content ul li .cartControl-wrapper .cart-decrease .cart-add:after {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              content: "";
+              width: 10px;
+              height: 1px;
+              background: #fff;
+              -moz-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+
+.list-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  display: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 1;
+  background: rgba(7, 17, 27, 0.6); }
+
 /*# sourceMappingURL=index.css.map */

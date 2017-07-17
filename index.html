@@ -394,6 +394,50 @@
 		<p>一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足</p>
 	</div>
 </div>
+<div class="list-mask"></div>
+<div class="shopcart-list">
+	<div class="list-header">
+		<h2>购物车</h2>
+		<span class="empty">清空</span>
+	</div>
+	<div class="list-content">
+		<ul>
+			<li>
+				<span class="name">皮蛋瘦肉粥</span>
+				<div class="price"><span>￥<em>10</em></span></div>
+				<div class="cartControl-wrapper">
+					<div class="cart-decrease">
+						<span class="iconfont icon-jian"></span>
+						<span class="cart-count">1</span>
+						<span class="iconfont cart-add"></span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<span class="name">皮蛋瘦肉粥</span>
+				<div class="price"><span>￥<em>10</em></span></div>
+				<div class="cartControl-wrapper">
+					<div class="cart-decrease">
+						<span class="iconfont icon-jian"></span>
+						<span class="cart-count">1</span>
+						<span class="iconfont cart-add"></span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<span class="name">皮蛋瘦肉粥</span>
+				<div class="price"><span>￥<em>10</em></span></div>
+				<div class="cartControl-wrapper">
+					<div class="cart-decrease">
+						<span class="iconfont icon-jian"></span>
+						<span class="cart-count">1</span>
+						<span class="iconfont cart-add"></span>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
 <script src="plugins/jquery-3.1.0.min.js"></script>
 <script>
 	$(document).ready(function(){
@@ -406,7 +450,7 @@
 		$(".menu-wrapper ul li").on("click",function(){
 			$(this).addClass("current").siblings().removeClass("current");
 			$(".foods-wrapper>ul>li").eq($(this).index()).offset().top;
-			var pos=$(".foods-wrapper>ul>li").eq($(this).index()).offset().top-listH;
+			var pos=$(".foods-wrapper>ul>li").eq($(this).index()).offset().top-listH+1;
 			$("html,body").animate({scrollTop: pos}, 1000);
 			return false;
 		});
@@ -499,6 +543,30 @@
 		$(".detail-info .cart-add").on("click",function(){
 			infoCount();
 		});
+
+
+		//列表+-
+		$(".shopcart-list .icon-jian").on("click",function(){
+			if(cartCount==0){
+				$(this).parent().parent().parent().remove();
+			}
+			if($(".shopcart-list .list-content ul li").length==0){
+				$(".shopcart-list").hide();
+				$(".list-mask").hide();
+			}
+			shopcartCount();
+		});
+		$(".shopcart-list .cart-add").on("click",function(){
+			shopcartCount();
+		});
+		$(".shopCart .content-left").on("click",function(){
+			$(".shopcart-list").show();
+			$(".list-mask").show();
+		});
+		$(".shopcart-list .empty").on("click",function(){
+			$(".shopcart-list").hide();
+			$(".list-mask").hide();
+		});
 		
 
 		function count(){
@@ -538,6 +606,36 @@
 			$(".detail-info .cart-count").each(function(index,element){   	    
 				numAll += parseInt($(element).text()); 
 				moneyAll += parseInt($(element).text()*$(this).parents(".cartControl-wrapper").prev().find(".now em").text())
+			});
+			$(".shopCart .num").text(numAll);
+			$(".shopCart .price em").text(moneyAll);
+            
+            jAll=jianAll-moneyAll;
+			if(jianAll>moneyAll && moneyAll!=0){	
+				$(".shopCart .pay em").text(jAll);
+				$(".shopCart .pay").removeClass("enough").html("还差￥<em>"+jAll+"</em>元起送");
+			}else if(jianAll<moneyAll){
+				$(".shopCart .pay").addClass("enough").html("去结算");
+			}else if(moneyAll==0){
+				$(".shopCart .pay").removeClass("enough").html("￥<em>20</em>元起送");
+			}
+
+			if(numAll>0){
+				$(".shopCart .num").show();
+				$(".shopCart .logo").addClass("active");
+			}else{
+				$(".shopCart .num").hide();
+				$(".shopCart .logo").removeClass("active");
+			}
+		}
+
+		function shopcartCount(){
+			numAll = 0;
+			moneyAll = 0;
+			jianAll=$(".shopCart .pay em").text();
+			$(".shopcart-list .cart-count").each(function(index,element){   	    
+				numAll += parseInt($(element).text()); 
+				moneyAll += parseInt($(element).text()*$(this).parents(".cartControl-wrapper").prev().find("span em").text())
 			});
 			$(".shopCart .num").text(numAll);
 			$(".shopCart .price em").text(moneyAll);
